@@ -221,8 +221,8 @@
             }
         }
 
-        
- @media (max-width: 600px) {
+
+        @media (max-width: 600px) {
             .grid {
                 grid-template-columns: 1fr;
             }
@@ -230,16 +230,18 @@
             header h1 {
                 font-size: 2rem;
             }
-             header{
-      display: flex;
-      flex-direction: column;
-}
- .sgeek {
+
+            header {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .sgeek {
                 padding: 10px;
                 max-width: 200px;
                 align-self: center;
             }
-    }
+        }
     </style>
 </head>
 
@@ -299,6 +301,12 @@
             document.querySelectorAll('.box').forEach(box => box.classList.remove('highlight'));
             element.classList.add('highlight');
         }
+
+
+        //Inserir link
+        document.querySelector("button").addEventListener("click", () => {
+            window.open("https://google.com.br", "_blank");
+        });
     </script>
 
     <div class="particles">
