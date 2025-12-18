@@ -7,6 +7,32 @@
     <title>A Batalha do Fogo Contra a Luz</title>
 
     <style>
+        /* Modal */
+        .item-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: pointer;
+        }
+
+        /* Imagem no modal */
+        .item-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+        }
+
+        /* Indica que é clicável */
+        .item {
+            cursor: pointer;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -297,12 +323,27 @@
     </footer>
 
     <script>
-        function highlight(element) {
-            document.querySelectorAll('.box').forEach(box => box.classList.remove('highlight'));
-            element.classList.add('highlight');
-        }
+        document.querySelectorAll('.item').forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img')
+                if (!img) return
 
+                const modal = document.createElement('div')
+                modal.className = 'item-modal'
 
+                const modalImg = document.createElement('img')
+                modalImg.src = img.src
+                modalImg.alt = img.alt
+
+                modal.appendChild(modalImg)
+                document.body.appendChild(modal)
+
+                // Fecha ao clicar
+                modal.addEventListener('click', () => {
+                    modal.remove()
+                })
+            })
+        })
         //Inserir link
         document.querySelector("button").addEventListener("click", () => {
             window.open("https://gd.games/instant-builds/02d9fcfc-cadc-4544-82e4-86088d1bacda", "_blank");
